@@ -1,0 +1,20 @@
+/* Grid layout for the slide preview area */
+.slide-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 slides per row */
+    gap: 10px; /* Space between the slides */
+}
+
+/* Style for each slide card */
+.slide-card {
+    background-color: #ADD8E6; /* Pale blue background color */
+    border-radius: 8px; /* Rounded edges */
+    padding: 10px; /* Padding inside the card */
+    text-align: center; /* Center align the content */
+}
+
+/* Style for the images inside each slide card */
+.slide-card img {
+    width: 100%; /* Full width of the card */
+    height: auto; /* Auto height to maintain aspect ratio */
+}
