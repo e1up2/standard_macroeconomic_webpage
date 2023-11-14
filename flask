@@ -1,0 +1,54 @@
+from flask import Flask, request, send_from_directory, abort
+import subprocess
+import os
+
+app = Flask(__name__)
+
+@app.route('/run-script', methods=['GET'])
+def run_script():
+    script_type = request.args.get('type')  # Get the script type from query parameters
+
+    # Define the paths to the Stata script files
+    script_paths = {
+        'standard': 'path/to/standard_slidedeck.do',
+        'less': 'path/to/less_slidedeck.do'
+    }
+
+    # Check if the script type is valid
+    if script_type not in script_paths:
+        abort(400, description="Invalid script type")
+
+    # Path to the Stata executable
+    stata_path = 'path/to/stata'
+
+    # Run the Stata script
+    try:
+        subprocess.run([stata_path, script_paths[script_type]], check=True)
+    except subprocess.CalledProcessError as e:
+        abort(500, description="Error executing Stata script")
+
+    # Return a response indicating success
+    return {"message": "Script executed successfully"}
+
+@app.route('/download-presentation', methods=['GET'])
+def download_presentation():
+    presentation_type = request.args.get('type')  # Get the presentation type from query parameters
+
+    # Define the filenames for the presentations
+    filenames = {
+        'standard': 'standard_macroeconomic_update.pptx',
+        'less': 'less_macroeconomic_update.pptx'
+    }
+
+    # Check if the presentation type is valid
+    if presentation_type not in filenames:
+        abort(400, description="Invalid presentation type")
+
+    # Define the directory where the presentations are stored
+    presentations_dir = 'path/to/presentations'
+
+    # Send the PowerPoint file as a response
+    return send_from_directory(directory=presentations_dir, filename=filenames[presentation_type], as_attachment=True)
+
+if __name__ == '__main__':
+    app.run(debug=True)
