@@ -2,34 +2,24 @@
 <html>
 <head>
     <title>PowerPoint Preview</title>
-    <style>
-        .slide-preview {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-        .slide-card {
-            background-color: #ADD8E6; /* Pale blue color */
-            border-radius: 8px;
-            padding: 10px;
-            text-align: center;
-        }
-        .slide-card img {
-            width: 100%;
-            height: auto;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <!-- Dropdown list for label options -->
     <select id="labelOption">
         <option value="standard">Standard Labels</option>
         <option value="less">Less Labels</option>
     </select>
+
+    <!-- Download button -->
     <button id="downloadBtn">Download</button>
+
+    <!-- Area for PowerPoint slide previews -->
     <div id="slidePreview" class="slide-preview">
         <!-- Slides will be displayed here -->
     </div>
 
+    <!-- JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
