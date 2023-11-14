@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PowerPoint Preview</title>
+    <style>
+        .slide-preview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .slide-card {
+            background-color: #ADD8E6; /* Pale blue color */
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        .slide-card img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <select id="labelOption">
+        <option value="standard">Standard Labels</option>
+        <option value="less">Less Labels</option>
+    </select>
+    <button id="downloadBtn">Download</button>
+    <div id="slidePreview" class="slide-preview">
+        <!-- Slides will be displayed here -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
